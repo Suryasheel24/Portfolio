@@ -1,12 +1,22 @@
+@use '../../../assets/scss/variables' as *;
+@use '../../../assets/scss/mixins' as *;
+
 :host {
   display: block;
+  width: 100%;
 }
 
 .timeline-container {
   position: relative;
   max-width: 960px;
   margin: 0 auto;
-  padding-left: 2rem;
+  padding-left: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (min-width: 480px) {
+    padding-left: 2rem;
+  }
 
   @media (min-width: 768px) {
     padding-left: 3rem;
@@ -17,11 +27,15 @@
     position: absolute;
     top: 1rem;
     bottom: 1rem;
-    left: 11px;
+    left: 8px;
     width: 3px;
     background: linear-gradient(180deg, #00F5D4 0%, #38BDF8 100%);
     box-shadow: 0 0 16px var(--accent-primary-glow), 0 0 24px rgba(56, 189, 248, 0.35);
     border-radius: 2px;
+
+    @media (min-width: 480px) {
+      left: 11px;
+    }
 
     @media (min-width: 768px) {
       left: 19px;
@@ -39,10 +53,10 @@
 
   .timeline-node {
     position: absolute;
-    left: calc(-2rem + 3px);
+    left: calc(-1.5rem + 1px);
     top: 1rem;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background-color: var(--bg-primary);
     border: 3px solid var(--accent-primary);
@@ -50,6 +64,12 @@
     z-index: 2;
     animation: pulse-glow 2s infinite ease-in-out;
     transition: all 0.25s ease;
+
+    @media (min-width: 480px) {
+      left: calc(-2rem + 3px);
+      width: 20px;
+      height: 20px;
+    }
 
     @media (min-width: 768px) {
       left: calc(-3rem + 10px);

@@ -1,11 +1,17 @@
+@use '../../../assets/scss/variables' as *;
+@use '../../../assets/scss/mixins' as *;
+
 :host {
   display: block;
+  width: 100%;
 }
 
 .skills-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
@@ -20,33 +26,34 @@
   -webkit-backdrop-filter: blur(24px) saturate(190%);
   border: 1px solid var(--glass-border);
   border-radius: 24px;
-  padding: 2rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
   display: flex;
   flex-direction: column;
   box-shadow: var(--glass-shadow), var(--glass-inset);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   overflow: hidden;
+  box-sizing: border-box;
 
-  &:hover {
+  @include hover-supported {
     transform: translateY(-6px);
     background-color: var(--surface-glass-hover);
     box-shadow: var(--glass-shadow-hover), var(--glass-inset);
-  }
 
-  &.skill-card--angular:hover {
-    border-color: rgba(0, 245, 212, 0.4);
-  }
+    &.skill-card--angular {
+      border-color: rgba(0, 245, 212, 0.4);
+    }
 
-  &.skill-card--arch:hover {
-    border-color: rgba(56, 189, 248, 0.4);
-  }
+    &.skill-card--arch {
+      border-color: rgba(56, 189, 248, 0.4);
+    }
 
-  &.skill-card--perf:hover {
-    border-color: rgba(251, 191, 36, 0.4);
-  }
+    &.skill-card--perf {
+      border-color: rgba(251, 191, 36, 0.4);
+    }
 
-  &.skill-card--tools:hover {
-    border-color: rgba(167, 139, 250, 0.4);
+    &.skill-card--tools {
+      border-color: rgba(167, 139, 250, 0.4);
+    }
   }
 }
 

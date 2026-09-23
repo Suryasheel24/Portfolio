@@ -1,6 +1,10 @@
+@use '../../../assets/scss/variables' as *;
+@use '../../../assets/scss/mixins' as *;
+
 :host {
   display: block;
   position: relative;
+  width: 100%;
 }
 
 .contact {
@@ -8,6 +12,8 @@
   overflow: hidden;
   padding-top: clamp(3rem, 6vw, 6rem);
   padding-bottom: clamp(4rem, 8vw, 7rem);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* =============================================================================
@@ -18,8 +24,8 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 560px;
-  height: 560px;
+  width: min(560px, 90vw);
+  height: min(560px, 90vw);
   border-radius: 50%;
   background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
   filter: blur(90px);
@@ -31,12 +37,19 @@
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.25rem;
+  gap: 2rem;
   align-items: stretch;
   position: relative;
   z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
 
-  @media (min-width: 992px) {
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 1200px) {
     grid-template-columns: 1fr 1.15fr;
     gap: 3rem;
   }
@@ -213,23 +226,34 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 10px;
     padding: 0.7rem 0.9rem;
+    box-sizing: border-box;
+    max-width: 100%;
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.65rem;
+    }
   }
 
   .email-address {
     font-family: var(--font-mono);
-    font-size: clamp(0.92rem, 1.2vw + 0.4rem, 1.08rem);
+    font-size: clamp(0.85rem, 1.2vw + 0.35rem, 1.05rem);
     font-weight: 600;
     color: var(--accent-primary);
     text-shadow: 0 0 12px rgba(0, 245, 212, 0.4);
     word-break: break-all;
+    overflow-wrap: anywhere;
     letter-spacing: 0.01em;
   }
 
   .copy-email-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.45rem;
     padding: 0.5rem 1rem;
+    min-height: 44px;
     font-family: var(--font-sans);
     font-size: 0.8rem;
     font-weight: 700;
@@ -241,7 +265,11 @@
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
 
-    &:hover {
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+
+    @include hover-supported {
       background: var(--accent-primary);
       color: #0B132B;
       box-shadow: 0 0 16px var(--accent-primary-glow);
@@ -354,6 +382,8 @@
     flex-direction: column;
     gap: 0.15rem;
     flex: 1;
+    min-width: 0;
+    overflow: hidden;
 
     .pill-label {
       font-size: 0.72rem;
@@ -369,6 +399,9 @@
       font-weight: 600;
       color: var(--text-primary);
       transition: color 0.2s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
@@ -622,6 +655,13 @@
     color: #34d399;
     box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
   }
+
+  &.is-error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #f87171;
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.15);
+  }
 }
 
 @keyframes fadeIn {
@@ -840,5 +880,11 @@
     background: rgba(5, 150, 105, 0.12);
     border-color: rgba(5, 150, 105, 0.35);
     color: #047857;
+  }
+
+  .form-feedback.is-error {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(220, 38, 38, 0.35);
+    color: #dc2626;
   }
 }
