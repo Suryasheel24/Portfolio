@@ -29,6 +29,23 @@
 
       <!-- Action Buttons & Theme Toggle -->
       <div class="header-actions">
+        <a
+          href="assets/resume/Suryasheel_Mourtika_UI_Developer.pdf"
+          download="Suryasheel_Mourtika_UI_Developer.pdf"
+          class="btn-glass-resume"
+          (click)="onDownloadResume()"
+          [class.is-downloading]="isDownloadingResume()"
+          aria-label="Download Suryasheel's Resume PDF"
+          title="Download Resume PDF"
+        >
+          <svg class="icon-download" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>{{ isDownloadingResume() ? 'Downloading...' : 'Resume' }}</span>
+        </a>
+
         <app-theme-toggle />
 
         <a (click)="onNavClick('contact', $event)" href="#contact" class="btn-glass-pill btn-cta" aria-label="Get in Touch">
@@ -77,6 +94,22 @@
       }
     </ul>
     <div class="mobile-actions">
+      <a
+        href="assets/resume/Suryasheel_Mourtika_UI_Developer.pdf"
+        download="Suryasheel_Mourtika_UI_Developer.pdf"
+        class="btn-glass-resume btn-block"
+        (click)="onDownloadResume()"
+        [class.is-downloading]="isDownloadingResume()"
+        aria-label="Download Suryasheel's Resume PDF"
+      >
+        <svg class="icon-download" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>{{ isDownloadingResume() ? 'Downloading PDF...' : 'Download Resume' }}</span>
+      </a>
+
       <a (click)="onNavClick('contact', $event)" href="#contact" class="btn-glass-pill btn-cta btn-block">
         <span>Get in Touch</span>
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

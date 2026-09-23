@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollService } from '../../core/services/scroll.service';
 import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
@@ -14,6 +14,14 @@ import { HeroCanvasComponent } from './hero-canvas.component';
 })
 export class HeroComponent {
   private readonly scrollService = inject(ScrollService);
+  readonly isDownloadingResume = signal<boolean>(false);
+
+  onDownloadResume(): void {
+    this.isDownloadingResume.set(true);
+    setTimeout(() => {
+      this.isDownloadingResume.set(false);
+    }, 1500);
+  }
 
   scrollTo(sectionId: string, event: Event): void {
     event.preventDefault();

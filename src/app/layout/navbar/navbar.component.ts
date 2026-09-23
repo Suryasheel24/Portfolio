@@ -19,6 +19,14 @@ interface NavItem {
 export class NavbarComponent implements OnInit {
   readonly scrollService = inject(ScrollService);
   readonly mobileOpen = signal<boolean>(false);
+  readonly isDownloadingResume = signal<boolean>(false);
+
+  onDownloadResume(): void {
+    this.isDownloadingResume.set(true);
+    setTimeout(() => {
+      this.isDownloadingResume.set(false);
+    }, 1500);
+  }
 
   readonly navItems: NavItem[] = [
     { id: 'skills', label: 'Skills' },
