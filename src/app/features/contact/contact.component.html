@@ -1,0 +1,247 @@
+<section id="contact" class="contact section" aria-label="Contact and Inquiry Information">
+  <!-- Fixed Ambient Glow Orb behind the contact section -->
+  <div class="contact-glow-orb" aria-hidden="true"></div>
+
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header text-center" appScrollReveal>
+      <span class="category-tag">05. GET IN TOUCH</span>
+      <h2 class="section-title">Let's Build Something Great Together</h2>
+      <p class="section-subtitle">
+        Open for frontend engineering opportunities, Angular architecture consulting, and high-performance UI systems.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Left Column: Interactive Direct Contact Terminal -->
+      <div class="contact-info-card" appScrollReveal>
+        <div class="terminal-header" aria-hidden="true">
+          <div class="terminal-dots">
+            <span class="dot dot--red"></span>
+            <span class="dot dot--yellow"></span>
+            <span class="dot dot--green"></span>
+          </div>
+          <span class="terminal-filename">contact-terminal.sh</span>
+          <span class="terminal-status-badge">
+            <span class="status-pulse-dot"></span>
+            ONLINE
+          </span>
+        </div>
+
+        <div class="contact-intro">
+          <h3 class="contact-headline">Direct Contact</h3>
+          <p class="contact-lead">
+            Whether you have an upcoming Angular project, an enterprise booking engine needing refactoring, or a frontend role, I'd love to connect.
+          </p>
+        </div>
+
+        <!-- Highlighted Inbox Tile: Floating glass code-tile with active pulsing dot -->
+        <div class="email-copy-block">
+          <div class="inbox-status-header">
+            <span class="inbox-pulsing-dot" aria-hidden="true"></span>
+            <span class="inbox-status-text">AVAILABLE FOR INBOX INQUIRIES</span>
+          </div>
+
+          <div class="email-terminal-row">
+            <span class="email-address">{{ emailAddress }}</span>
+            <button
+              type="button"
+              class="copy-email-btn"
+              [class.is-copied]="copiedEmail()"
+              (click)="copyEmail()"
+              aria-label="Copy email address to clipboard"
+            >
+              @if (copiedEmail()) {
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>✓ Copied!</span>
+              } @else {
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Copy</span>
+              }
+            </button>
+          </div>
+
+          <div class="response-window-tag">
+            <span class="response-dot" aria-hidden="true">&bull;</span>
+            <span>Typical response window: &lt; 24 hours</span>
+          </div>
+        </div>
+
+        <!-- Iconified Contact Links: Sleek horizontal .glass-link-pill rows -->
+        <div class="contact-links-stack">
+          <!-- 1. Phone Link Pill -->
+          <a href="tel:+916207777094" class="glass-link-pill" aria-label="Call Suryasheel Mourtika">
+            <div class="pill-icon-badge phone-badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <div class="pill-content">
+              <span class="pill-label">Phone</span>
+              <span class="pill-value">+91 620-7777-094</span>
+            </div>
+            <div class="pill-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </div>
+          </a>
+
+          <!-- 2. Location Pill -->
+          <div class="glass-link-pill no-click" tabindex="0" aria-label="Location: Noida / New Delhi, India">
+            <div class="pill-icon-badge location-badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div class="pill-content">
+              <span class="pill-label">Location</span>
+              <span class="pill-value">Noida / New Delhi, India</span>
+            </div>
+          </div>
+
+          <!-- 3. LinkedIn Link Pill -->
+          <a href="https://linkedin.com/in/suryasheel" target="_blank" rel="noopener noreferrer" class="glass-link-pill" aria-label="Visit Suryasheel's LinkedIn Profile">
+            <div class="pill-icon-badge linkedin-badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28Z"/>
+              </svg>
+            </div>
+            <div class="pill-content">
+              <span class="pill-label">LinkedIn</span>
+              <span class="pill-value">linkedin.com/in/suryasheel</span>
+            </div>
+            <div class="pill-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+          </a>
+
+          <!-- 4. GitHub Link Pill -->
+          <a href="https://github.com/suryasheel" target="_blank" rel="noopener noreferrer" class="glass-link-pill" aria-label="Visit Suryasheel's GitHub Profile">
+            <div class="pill-icon-badge github-badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/>
+              </svg>
+            </div>
+            <div class="pill-content">
+              <span class="pill-label">GitHub</span>
+              <span class="pill-value">github.com/suryasheel</span>
+            </div>
+            <div class="pill-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Elevated Frosted Contact Form -->
+      <div class="contact-form-card" appScrollReveal [revealDelay]="120">
+        <div class="form-header">
+          <h3 class="form-title">Send a Message</h3>
+          <p class="form-subtitle">Fill out the form below or email directly. I'll get back to you within 24 hours.</p>
+        </div>
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form" novalidate>
+          <!-- Name Input Field -->
+          <div class="form-group">
+            <label for="contact-name" class="form-label">Your Name</label>
+            <div class="input-wrapper">
+              <input
+                id="contact-name"
+                type="text"
+                formControlName="name"
+                class="form-control"
+                [class.has-error]="isFieldInvalid('name')"
+                placeholder="e.g. Alex Johnson"
+                autocomplete="name"
+              >
+            </div>
+            @if (isFieldInvalid('name')) {
+              <span class="field-error">Please enter your name (at least 2 characters).</span>
+            }
+          </div>
+
+          <!-- Email Input Field -->
+          <div class="form-group">
+            <label for="contact-email" class="form-label">Email Address</label>
+            <div class="input-wrapper">
+              <input
+                id="contact-email"
+                type="email"
+                formControlName="email"
+                class="form-control"
+                [class.has-error]="isFieldInvalid('email')"
+                placeholder="e.g. alex@company.com"
+                autocomplete="email"
+              >
+            </div>
+            @if (isFieldInvalid('email')) {
+              <span class="field-error">Please provide a valid email address.</span>
+            }
+          </div>
+
+          <!-- Message Textarea -->
+          <div class="form-group">
+            <label for="contact-message" class="form-label">Message / Project Outline</label>
+            <div class="input-wrapper">
+              <textarea
+                id="contact-message"
+                formControlName="message"
+                rows="4"
+                class="form-control form-textarea"
+                [class.has-error]="isFieldInvalid('message')"
+                placeholder="Tell me about your project, timeline, or engineering role..."
+              ></textarea>
+            </div>
+            @if (isFieldInvalid('message')) {
+              <span class="field-error">Please write a brief message (minimum 10 characters).</span>
+            }
+          </div>
+
+          <!-- Submit Button: .btn-submit-glass with shimmer and send SVG icon -->
+          <button
+            type="submit"
+            class="btn-submit-glass"
+            [disabled]="isSubmitting()"
+            aria-label="Send Message"
+          >
+            <span class="btn-shimmer" aria-hidden="true"></span>
+            @if (isSubmitting()) {
+              <span class="btn-spinner" aria-hidden="true"></span>
+              <span>Sending Message...</span>
+            } @else {
+              <span>Send Message</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            }
+          </button>
+
+          <!-- Submission Feedback Toast -->
+          @if (isSubmitted()) {
+            <div class="form-feedback is-success" role="status">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Thank you! Your message has been sent successfully. I'll get back to you shortly.</span>
+            </div>
+          }
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

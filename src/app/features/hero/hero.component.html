@@ -1,0 +1,59 @@
+<section id="hero" class="hero section" aria-label="Introduction">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left Column: Copy, Availability, CTAs & Core Tech Stack -->
+      <div class="hero-content" appScrollReveal>
+        <!-- Top Status Pill: Available for Hire -->
+        <div class="hero-status-badge">
+          <span class="status-dot"></span>
+          <span>AVAILABLE FOR HIRE: <strong class="status-role">UI &amp; ANGULAR ROLES</strong></span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="hero-headline">
+          Building Modular Angular UIs &amp;
+          <span class="highlight-gradient">Modern Design Systems</span>
+        </h1>
+
+        <!-- Authentic Subtitle -->
+        <p class="hero-subtitle">
+          Specializing in <strong>responsive component architecture</strong>, modern <strong>SCSS design systems</strong>, and <strong>fluid micro-interactions</strong>—powered by <strong>Angular 17</strong>, <strong>TypeScript</strong>, and <strong>Web Accessibility standards</strong>.
+        </p>
+
+        <!-- Primary & Secondary CTA Buttons -->
+        <div class="hero-cta-group">
+          <a (click)="scrollTo('projects', $event)" href="#projects" class="btn btn-primary-emerald">
+            <span>Explore Featured Work</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a (click)="scrollTo('contact', $event)" href="#contact" class="btn btn-glass-secondary">
+            <span>View Resume / Contact</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Bottom Tech Stack Strip: Single Horizontal Glass Pill Container -->
+        <div class="hero-tech-strip">
+          <span class="tech-strip-label">// CORE TECH STACK</span>
+          <div class="tech-strip-pills">
+            <span class="tech-tag">&#123; Angular 17 &#125;</span>
+            <span class="tech-tag">&#123; SCSS Architecture &#125;</span>
+            <span class="tech-tag">&#123; TypeScript &#125;</span>
+            <span class="tech-tag">&#123; RxJS &#125;</span>
+            <span class="tech-tag">&#123; Web Accessibility &#125;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Glassmorphism UI Component Canvas -->
+      <div class="hero-visual" appScrollReveal [revealDelay]="150">
+        <app-hero-canvas />
+      </div>
+    </div>
+  </div>
+</section>

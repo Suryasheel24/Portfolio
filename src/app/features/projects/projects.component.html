@@ -1,0 +1,201 @@
+<section id="projects" class="projects section" aria-label="Featured Engineering Projects">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header text-center" appScrollReveal>
+      <span class="category-tag">02. SELECTED WORK</span>
+      <h2 class="section-title">Featured UI Engineering Projects</h2>
+      <p class="section-subtitle">
+        Production-ready applications, component libraries, and client web builds featuring Angular architecture, reactive state, and modular SCSS.
+      </p>
+    </div>
+
+    <!-- 3-Card Responsive Grid -->
+    <div class="projects-grid">
+      @for (project of projects(); track project.id; let i = $index) {
+        <article
+          class="project-card"
+          [ngClass]="'project-card--' + (project.kickerVariant || 'mint')"
+          appScrollReveal
+          [revealDelay]="i * 100"
+        >
+          <!-- Glassmorphic Preview Header Graphic (Height capped at 140px) -->
+          <div class="project-preview">
+            <div class="preview-bar">
+              <div class="preview-dots" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <span class="preview-url">{{ project.mockup.urlText }}</span>
+              <span class="preview-tag">{{ project.mockup.tagText }}</span>
+            </div>
+
+            <div class="preview-graphic">
+              <!-- Distinct UI Mockup 1: Angular Standalone + RxJS Pipeline Code Preview -->
+              @if (project.mockup.type === 'code') {
+                <div class="mockup-code-tab">
+                  <div class="code-editor-header">
+                    <span class="file-icon">&lt;/&gt;</span>
+                    <span class="file-name">travel-engine.component.ts</span>
+                    <span class="tech-indicator">OnPush</span>
+                  </div>
+                  <pre class="code-editor-body"><code><span class="tok-kwd">&#64;Component</span>({{ '{' }}
+  <span class="tok-prop">standalone</span>: <span class="tok-bool">true</span>, <span class="tok-prop">changeDetection</span>: <span class="tok-val">OnPush</span>
+{{ '}' }})
+<span class="tok-kwd">export class</span> <span class="tok-cls">TravelEngine</span> {{ '{' }}
+  <span class="tok-kwd">readonly</span> <span class="tok-prop">fares$</span> = <span class="tok-this">this</span>.<span class="tok-prop">gdsApi</span>.<span class="tok-fn">streamFares</span>().<span class="tok-fn">pipe</span>(
+    <span class="tok-fn">debounceTime</span>(<span class="tok-num">150</span>), <span class="tok-fn">shareReplay</span>(<span class="tok-num">1</span>)
+  );
+{{ '}' }}</code></pre>
+                </div>
+              }
+
+              <!-- Distinct UI Mockup 2: Prime Dry Clean Interactive Order State Progression -->
+              @if (project.mockup.type === 'stepper') {
+                <div class="mockup-stepper-container">
+                  <div class="stepper-header-row">
+                    <span class="order-id">Order #PDC-4821</span>
+                    <button
+                      type="button"
+                      class="status-toggle-btn"
+                      (click)="cycleOrderStep($event)"
+                      title="Click to toggle order status"
+                    >
+                      <span class="status-pulse"></span>
+                      <span>{{ getStepLabel(orderStep()) }}</span>
+                      <span class="toggle-hint">&#x21bb;</span>
+                    </button>
+                  </div>
+
+                  <div class="stepper-progress-track">
+                    <div class="track-line-bg"></div>
+                    <div
+                      class="track-line-fill"
+                      [style.width.%]="(orderStep() / (orderSteps.length - 1)) * 100"
+                    ></div>
+                    <div class="track-nodes">
+                      @for (step of orderSteps; track step.id; let sIdx = $index) {
+                        <button
+                          type="button"
+                          class="track-node"
+                          [class.is-completed]="sIdx < orderStep()"
+                          [class.is-active]="sIdx === orderStep()"
+                          (click)="setOrderStep(sIdx, $event)"
+                          [attr.aria-label]="step.name"
+                        >
+                          @if (sIdx < orderStep()) {
+                            <span class="check-mark">&check;</span>
+                          } @else {
+                            <span class="node-num">{{ sIdx + 1 }}</span>
+                          }
+                        </button>
+                      }
+                    </div>
+                  </div>
+
+                  <div class="stepper-step-labels">
+                    @for (step of orderSteps; track step.id; let sIdx = $index) {
+                      <span
+                        class="step-label"
+                        [class.is-active]="sIdx === orderStep()"
+                        [class.is-completed]="sIdx < orderStep()"
+                      >
+                        {{ step.shortName }}
+                      </span>
+                    }
+                  </div>
+                </div>
+              }
+
+              <!-- Distinct UI Mockup 3: Design System Color Swatches & Custom Toggle Control -->
+              @if (project.mockup.type === 'tokens') {
+                <div class="mockup-tokens-container">
+                  <div class="tokens-swatch-row">
+                    @for (swatch of colorSwatches; track swatch.hex) {
+                      <button
+                        type="button"
+                        class="swatch-pill"
+                        [class.is-selected]="selectedSwatch() === swatch.hex"
+                        (click)="selectSwatch(swatch.hex, $event)"
+                        [attr.aria-label]="swatch.name"
+                      >
+                        <span class="swatch-color" [style.background]="swatch.hex"></span>
+                        <span class="swatch-code">{{ swatch.hex }}</span>
+                      </button>
+                    }
+                  </div>
+
+                  <div
+                    class="tokens-preview-box"
+                    [style.backdrop-filter]="isDsGlassActive() ? 'blur(20px) saturate(180%)' : 'none'"
+                    [style.-webkit-backdrop-filter]="isDsGlassActive() ? 'blur(20px) saturate(180%)' : 'none'"
+                    [style.border-color]="selectedSwatch() + '55'"
+                  >
+                    <div class="preview-box-left">
+                      <span class="token-title">Frosted Glass</span>
+                      <span class="token-value" [style.color]="selectedSwatch()">{{ selectedSwatch() }}</span>
+                    </div>
+                    <label class="custom-toggle-control" aria-label="Toggle Glass Effect">
+                      <input
+                        type="checkbox"
+                        [checked]="isDsGlassActive()"
+                        (change)="toggleDsGlass($event)"
+                      >
+                      <span class="toggle-track">
+                        <span class="toggle-thumb"></span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- Card Body Content (Compact 1.25rem padding) -->
+          <div class="project-body">
+            <span class="project-kicker" [ngClass]="'kicker--' + (project.kickerVariant || 'mint')">
+              {{ project.kicker }}
+            </span>
+            <h3 class="project-title">{{ project.title }}</h3>
+            <!-- 2-Line Clamped Description -->
+            <p class="project-description">{{ project.description }}</p>
+
+            <!-- Tech Badges: Single-Row Non-wrapping with top key technologies -->
+            <div class="project-tags" aria-label="Technologies used">
+              @for (tag of project.tags.slice(0, 3); track tag) {
+                <span class="tag-mono">{{ tag }}</span>
+              }
+              @if (project.tags.length > 3) {
+                <span class="tag-more">+{{ project.tags.length - 3 }} more</span>
+              }
+            </div>
+
+            <!-- Compact 50/50 Dual Action Buttons (38px height) -->
+            <div class="project-actions">
+              @for (action of project.actions; track action.label) {
+                <a
+                  [href]="action.url"
+                  class="action-btn"
+                  [ngClass]="action.isPrimary ? 'btn-glass-primary' : 'btn-ghost'"
+                  [attr.target]="action.external ? '_blank' : null"
+                  [attr.rel]="action.external ? 'noopener noreferrer' : null"
+                >
+                  <span>{{ action.label }}</span>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    @if (action.external) {
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    } @else {
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    }
+                  </svg>
+                </a>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,171 @@
+<div class="hero-canvas-wrapper">
+  <!-- Ambient Glow Orb behind the hero visual container -->
+  <div class="glass-glow-orb" aria-hidden="true"></div>
+
+  <div class="hero-ui-canvas">
+    <!-- Floating Token Pill 1 (Top Right): { A11y: WCAG 2.1 AA } with green check icon -->
+    <div class="canvas-floating-pill canvas-pill--top-right" aria-hidden="true">
+      <span class="pill-icon-check">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </span>
+      <span class="pill-text">&#123; A11y: WCAG 2.1 AA &#125;</span>
+    </div>
+
+    <!-- Primary Glass Card: Live UI Playground with dynamic CSS Custom Property bindings -->
+    <div
+      class="primary-glass-card"
+      [attr.data-canvas-theme]="themeSignal()"
+      [style.--card-blur.px]="blurPrecision() / 4"
+      [style.--card-opacity]="blurPrecision() / 100"
+    >
+      <!-- Card Header with Mock Window Controls -->
+      <div class="glass-card-header">
+        <div class="window-dots" aria-hidden="true">
+          <span class="dot dot--red"></span>
+          <span class="dot dot--yellow"></span>
+          <span class="dot dot--green"></span>
+        </div>
+        <span class="card-header-title">design-tokens.preview.ts</span>
+        <span class="card-header-badge">
+          <span class="badge-pulse"></span>
+          LIVE PLAYGROUND
+        </span>
+      </div>
+
+      <!-- Card Body: Interactive Playground Controls -->
+      <div class="glass-card-body">
+        <!-- Control 1: Theme Switcher Toggle -->
+        <div class="canvas-component-row">
+          <div class="row-header">
+            <span class="component-label">Theme Switcher</span>
+            <span class="component-state-tag">{{ themeSignal() | uppercase }} MODE</span>
+          </div>
+          <div class="theme-toggle-container">
+            <div class="toggle-track" [class.is-light]="themeSignal() === 'light'">
+              <!-- Sliding Indicator Thumb with 0.25s cubic-bezier transition -->
+              <div class="toggle-slider-thumb" [class.thumb-light]="themeSignal() === 'light'"></div>
+
+              <button
+                type="button"
+                class="toggle-btn"
+                [class.active]="themeSignal() === 'dark'"
+                (click)="setTheme('dark')"
+                aria-label="Switch to Dark Mode"
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <span>Dark</span>
+              </button>
+
+              <button
+                type="button"
+                class="toggle-btn"
+                [class.active]="themeSignal() === 'light'"
+                (click)="setTheme('light')"
+                aria-label="Switch to Light Mode"
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <span>Light</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Control 2: Micro-Interaction Precision Range Slider -->
+        <div class="canvas-component-row">
+          <div class="row-header">
+            <span class="component-label">Micro-Interaction Precision</span>
+            <span class="component-value-pill">{{ blurPrecision() }}%</span>
+          </div>
+          <div class="slider-container">
+            <input
+              type="range"
+              min="50"
+              max="100"
+              [value]="blurPrecision()"
+              (input)="updatePrecision($event)"
+              class="reactive-range-slider"
+              aria-label="Micro-Interaction Precision Slider"
+            />
+            <div class="slider-progress-track">
+              <div class="slider-progress-fill" [style.width.%]="blurPrecision()"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Control 3: Dynamic Design Token Copy Stream -->
+        <div class="canvas-component-row token-row">
+          <div class="row-header">
+            <span class="component-label">Dynamic SCSS Token</span>
+
+            @if (tokenCopied()) {
+              <button type="button" class="token-status-btn copied" aria-live="polite">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>COPIED!</span>
+              </button>
+            } @else {
+              <button type="button" class="token-status-btn" (click)="copyToken()" aria-label="Copy SCSS token">
+                <span>CLICK TO COPY</span>
+              </button>
+            }
+          </div>
+
+          <button
+            type="button"
+            class="live-token-badge-btn"
+            (click)="copyToken()"
+            [class.token-highlight]="tokenCopied()"
+            title="Click to copy SCSS token"
+            aria-label="Copy SCSS design token to clipboard"
+          >
+            <span class="token-prefix">$</span>
+            <span class="token-var">ui-glass-refraction</span>:
+            <span class="token-val">
+              {{ themeSignal() === 'dark' ? 'rgba(15, 23, 42, ' + cardOpacity() + ')' : 'rgba(255, 255, 255, ' + cardOpacity() + ')' }}
+            </span>;
+            <span class="token-comment">// blur: {{ cardBlurPx() | number:'1.0-0' }}px</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Card Footer: Telemetry & Quality Standards -->
+      <div class="glass-card-footer">
+        <div class="footer-metric">
+          <span class="metric-label">LCP SPEED</span>
+          <span class="metric-val">&lt; 0.8s</span>
+        </div>
+        <div class="footer-separator"></div>
+        <div class="footer-metric">
+          <span class="metric-label">FID / INP</span>
+          <span class="metric-val">&lt; 16ms</span>
+        </div>
+        <div class="footer-separator"></div>
+        <div class="footer-metric">
+          <span class="metric-label">COMPLIANCE</span>
+          <span class="metric-val text-emerald">100%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Token Pill 2 (Bottom Left): { 60 FPS Micro-Interactions } with cyan pulse dot -->
+    <div class="canvas-floating-pill canvas-pill--bottom-left" aria-hidden="true">
+      <span class="pill-pulse-dot"></span>
+      <span class="pill-text">&#123; 60 FPS Micro-Interactions &#125;</span>
+    </div>
+  </div>
+</div>

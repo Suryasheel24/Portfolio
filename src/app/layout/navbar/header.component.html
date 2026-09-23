@@ -1,0 +1,89 @@
+<header class="site-header" [class.is-scrolled]="scrollService.isHeaderScrolled()">
+  <div class="nav-inner">
+    <!-- Brand Logo: Matches Footer spacing and typography -->
+    <a (click)="onNavClick('hero', $event)" href="#hero" class="brand-logo" aria-label="Suryasheel Mourtika Portfolio - Back to top">
+      <img src="assets/images/logo.jpg" alt="Suryasheel Mourtika Logo" class="logo-image" width="38" height="38">
+      <div class="logo-text">
+        <span class="logo-title">Suryasheel<span class="accent">.dev</span></span>
+        <span class="logo-subtitle">Angular Specialist</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      <ul class="nav-links">
+        @for (item of navItems; track item.id) {
+          <li>
+            <a
+              (click)="onNavClick(item.id, $event)"
+              [href]="'#' + item.id"
+              class="nav-link"
+              [class.active]="scrollService.activeSection() === item.id"
+              [attr.aria-current]="scrollService.activeSection() === item.id ? 'page' : null"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+
+      <!-- Action Buttons & Theme Toggle -->
+      <div class="header-actions">
+        <app-theme-toggle />
+
+        <a (click)="onNavClick('contact', $event)" href="#contact" class="btn-glass-pill btn-cta" aria-label="Get in Touch">
+          <span>Get in Touch</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Mobile Controls -->
+    <div class="mobile-controls">
+      <app-theme-toggle />
+      <button
+        type="button"
+        class="mobile-toggle"
+        [class.is-open]="mobileOpen()"
+        (click)="toggleMobileMenu()"
+        aria-label="Toggle navigation menu"
+        [attr.aria-expanded]="mobileOpen()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" [class.is-open]="mobileOpen()">
+    <ul class="mobile-links">
+      @for (item of navItems; track item.id) {
+        <li>
+          <a
+            (click)="onNavClick(item.id, $event)"
+            [href]="'#' + item.id"
+            class="mobile-link"
+            [class.active]="scrollService.activeSection() === item.id"
+          >
+            <span>{{ item.label }}</span>
+            <span class="link-arrow">&rarr;</span>
+          </a>
+        </li>
+      }
+    </ul>
+    <div class="mobile-actions">
+      <a (click)="onNavClick('contact', $event)" href="#contact" class="btn-glass-pill btn-cta btn-block">
+        <span>Get in Touch</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>

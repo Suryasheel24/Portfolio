@@ -1,0 +1,62 @@
+:host {
+  display: block;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* =============================================================================
+// AMBIENT GLASS LIGHTING ORBS
+// High-saturation floating blurred color fields that refract through frosted glass
+// ============================================================================= */
+
+.ambient-orbs {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  transition: opacity 0.5s ease;
+
+  &.ambient-orb--mint {
+    top: 5%;
+    left: 8%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, #00F5D4 0%, rgba(0, 245, 212, 0) 70%);
+  }
+
+  &.ambient-orb--cyan {
+    top: 45%;
+    right: 5%;
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, #38BDF8 0%, rgba(56, 189, 248, 0) 70%);
+  }
+}
+
+:host-context([data-theme="light"]) {
+  .ambient-orb {
+    opacity: 0.10;
+
+    &.ambient-orb--mint {
+      background: radial-gradient(circle, #047857 0%, rgba(4, 120, 87, 0) 70%);
+    }
+
+    &.ambient-orb--cyan {
+      background: radial-gradient(circle, #1C2541 0%, rgba(28, 37, 65, 0) 70%);
+    }
+  }
+}
