@@ -69,7 +69,7 @@ export class ExperienceComponent {
   readonly milestones = signal<ExperienceMilestone[]>([
     {
       role: 'Frontend Developer',
-      company: 'GenX eSolutions',
+      company: '',
       period: 'Feb 2025 – Present',
       variant: 'mint',
       achievements: [
@@ -83,7 +83,7 @@ export class ExperienceComponent {
     },
     {
       role: 'Freelance Frontend Developer',
-      company: 'Self-Employed',
+      company: '',
       period: 'Apr 2024 – Jan 2025',
       variant: 'cyan',
       achievements: [
@@ -94,7 +94,7 @@ export class ExperienceComponent {
     },
     {
       role: 'Jr Frontend Developer',
-      company: 'SAGO',
+      company: '',
       period: 'Jul 2021 – Apr 2024',
       variant: 'mint',
       achievements: [

@@ -30,14 +30,14 @@ export class NavbarComponent implements OnInit {
 
   readonly navItems: NavItem[] = [
     { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
+    // { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
     { id: 'education', label: 'Education' },
     { id: 'contact', label: 'Contact' }
   ];
 
   ngOnInit(): void {
-    this.scrollService.initScrollSpy(['hero', 'skills', 'projects', 'experience', 'education', 'contact']);
+    this.scrollService.initScrollSpy(['hero', 'skills', /* 'projects', */ 'experience', 'education', 'contact']);
   }
 
   @HostListener('window:keydown.escape')

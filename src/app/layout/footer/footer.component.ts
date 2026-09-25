@@ -28,7 +28,7 @@ import { ScrollService } from '../../core/services/scroll.service';
               <ul class="footer-nav-list">
                 <li><a (click)="scrollTo('hero', $event)" href="#hero" class="footer-nav-link">Home</a></li>
                 <li><a (click)="scrollTo('skills', $event)" href="#skills" class="footer-nav-link">Skills</a></li>
-                <li><a (click)="scrollTo('projects', $event)" href="#projects" class="footer-nav-link">Projects</a></li>
+                <!-- <li><a (click)="scrollTo('projects', $event)" href="#projects" class="footer-nav-link">Projects</a></li> -->
                 <li><a (click)="scrollTo('experience', $event)" href="#experience" class="footer-nav-link">Experience</a></li>
                 <li><a (click)="scrollTo('education', $event)" href="#education" class="footer-nav-link">Education</a></li>
                 <li><a (click)="scrollTo('contact', $event)" href="#contact" class="footer-nav-link">Contact</a></li>
